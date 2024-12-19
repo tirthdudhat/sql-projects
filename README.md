@@ -1,5 +1,5 @@
-### sql-project
-## SQL Retail Sales Analysis
+# sql-project
+# SQL Retail Sales Analysis
 ```sql
 CREATE DATABASE sql_project;
 
@@ -79,29 +79,29 @@ WHERE
     total_sale IS NULL;
 ```
     
-## Data Exploration
+# Data Exploration
 
-# How many sales we have?
+## How many sales we have?
 ```sql
 SELECT COUNT(*) as total_sale FROM retail_sales
 ```
-# How many uniuque customers we have ?
+## How many uniuque customers we have ?
 ```sql
 SELECT COUNT(DISTINCT customer_id) as total_sale FROM retail_sales;
 
 SELECT DISTINCT category FROM retail_sales
 ```
 
-## Data Analysis 
+# Data Analysis 
 
-# Q.1 Write an SQL query to retrieve all columns for sales made on '2022-11-05
+## Q.1 Write an SQL query to retrieve all columns for sales made on '2022-11-05
 ```sql
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
-# Q.2 Write an SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022
+## Q.2 Write an SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022
 ```sql
     
 SELECT * FROM
@@ -118,7 +118,7 @@ WHERE month(sale_date)='11'
 
 
 
-# Q.3 Write an SQL query to calculate the total sales (total_sale) for each category.
+## Q.3 Write an SQL query to calculate the total sales (total_sale) for each category.
 ```sql
 SELECT 
     category,
@@ -127,7 +127,7 @@ SELECT
 FROM retail_sales
 GROUP BY 1
 ```
-#Q.4 Write an SQL query to find the average age of customers who purchased items from the 'Beauty' category.
+## Q.4 Write an SQL query to find the average age of customers who purchased items from the 'Beauty' category.
 ```sql
 SELECT
     ROUND(AVG(age), 2) as avg_age
@@ -135,13 +135,13 @@ FROM retail_sales
 WHERE category = 'Beauty'
 ```
 
-# Q.5 Write an SQL query to find all transactions where the total_sale is greater than 1000.
+## Q.5 Write an SQL query to find all transactions where the total_sale is greater than 1000.
 ```sql
 SELECT * FROM retail_sales
 WHERE total_sale > 1000
 ```
 
-# Q.6 Write an SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
+## Q.6 Write an SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
 ```sql
 SELECT 
     category,
@@ -155,7 +155,7 @@ GROUP
 ORDER BY 1
 ```
 
-# Q.7 Write an SQL query to calculate the average sale for each month. Find out best selling month in each year
+## Q.7 Write an SQL query to calculate the average sale for each month. Find out best selling month in each year
 ```sql
 SELECT 
        year,
@@ -174,7 +174,7 @@ GROUP BY 1, 2
 WHERE month_rank = 1
 ```
 
-# Q.8 Write an SQL query to find the top 5 customers based on the highest total sales 
+## Q.8 Write an SQL query to find the top 5 customers based on the highest total sales 
 ```sql
 SELECT 
     customer_id,
@@ -184,7 +184,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 5
 ```
-# Q.9 Write an SQL query to find the number of unique customers who purchased items from each category.
+## Q.9 Write an SQL query to find the number of unique customers who purchased items from each category.
 ```sql
 SELECT 
     category,    
@@ -194,7 +194,7 @@ GROUP BY category
 ```
 
 
-# Q.10 Write an SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
+## Q.10 Write an SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
 ```sql
 WITH hourly_sale
 AS
@@ -213,7 +213,7 @@ SELECT
 FROM hourly_sale
 GROUP BY shift
 ```
-# Q.11 Write an SQL query to find the youngest and oldest customer (based on age) who purchased items from the Electronics category.
+## Q.11 Write an SQL query to find the youngest and oldest customer (based on age) who purchased items from the Electronics category.
 ```sql
 SELECT 	category,
 		MIN(age),
@@ -221,7 +221,7 @@ SELECT 	category,
 FROM retail_sales
 WHERE category = 'Electronics';
 ```
-# Q.12 Write an SQL query to retrieve all transactions where the price per unit is greater than the average price of all items sold.
+## Q.12 Write an SQL query to retrieve all transactions where the price per unit is greater than the average price of all items sold.
 ```sql	
 SELECT *
 FROM retail_sales
@@ -230,7 +230,7 @@ WHERE price_per_unit >(
         FROM retail_sales);
  ```       
         
-# Q.13 Write an SQL query to calculate the cumulative total sales by category over time
+## Q.13 Write an SQL query to calculate the cumulative total sales by category over time
 ```sql
 SELECT 
     category,
@@ -241,7 +241,7 @@ FROM
 ORDER BY 
     category, sale_date;
 ```    
-# Q.14 Write a SQL query to identify customers who made more than 5 transactions in the month of December 2022.
+## Q.14 Write a SQL query to identify customers who made more than 5 transactions in the month of December 2022.
 ```sql
 SELECT 
    customer_id,
@@ -251,7 +251,7 @@ WHERE sale_date BETWEEN '2022-12-01' AND '2022-12-31'
 GROUP BY customer_id
 HAVING COUNT(customer_id) > 2
 ```
-# Q.15 Write a SQL query to calculate the total sales contribution for each gender (male and female) as a percentage of the overall sales.
+## Q.15 Write a SQL query to calculate the total sales contribution for each gender (male and female) as a percentage of the overall sales.
 ```sql
 SELECT 
     gender,
@@ -262,8 +262,8 @@ FROM
 GROUP BY 
     gender;
 ```    
-# Q.16 Write a SQL query to rank each transaction within its category based on total_sale in descending order. Display the top 2 transactions for each category
-```
+## Q.16 Write a SQL query to rank each transaction within its category based on total_sale in descending order. Display the top 2 transactions for each category
+```sql
 WITH RankedTransactions AS (
     SELECT 
         category,
